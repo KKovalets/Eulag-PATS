@@ -1,0 +1,44 @@
+$Inp2D
+H=5000.0 	!Depth, m
+n=2453		!number of points over the depth (n=(H-Z_measur)/dz)
+ni=1000 	!number of points over diameter
+frac="poc", "opals", "caco3" !names of component (lowercase letters only; use only "caco3" for calcites; names must be specified in order) 
+vartime=1, 0, 0   !1 - time-variable component degradation rate (for opals and calcites is 0, for POC can be 1 or 0)
+roi=1033., 2000., 2803. !kg/m^3, component density; here 1-POC, 2-opals, 3-CaCO3
+ai=2592000., 2592000., 2592000. !s, constant for time-dependent degradation rate 
+bi=1., 1., 1. 		!constant for time-dependent degradation rate
+Cri=3.4722222e-7, 2.66203703703e-7, 0. !1/s - constant for constant degradation rate ; here 1-POC, 2-opals, 3-CaCO3
+Q10i=2., 2., 1.		!temperature coefficient, set 1. if degradation rate of the component is temperature-independent
+Cw=2.5463 	!prefactor coefficient for the velocity, m^(1−η)/s; for calculations, where velocity parameters are input directly
+K_O2i=0.000256, 0., 0. !oxygen dependence parameter kg*m^(−3), set 0. if degradation rate is oxygen-independent
+sigma=2.28 	!dimensionless scaling argument for mass
+eta=1.17 	!dimensionless scaling argument for velocity; for calculations, where velocity parameters are input directly
+teta=3.9 	!scaling argument for calcite-saturation-dependent caco3 degradation rate; if not dependent, set 0. 
+epsilon=4.2 	!power-law exponent for the size distribution default value used for constant epsilon
+eps_max=4.2 	!power-law exponent for the size distribution maximum value (for variable epsilon, mode_eps=1 or mode_eps=2)
+eps_min=2. 	!power-law exponent for the size distribution minimum value (for variable epsilon, mode_eps=1 or mode_eps=2)
+nu=1.15e-6 	!viscosity basic value, temperature-dependent profile is calculated in program
+dstart=20e-6 	!minimum diameter, m
+dend=2000e-6  	!maximum diameter, m
+dp=2e-6		!primary particle diameter (also used as limit-value for diameter) m
+Trefi=4., 4., 4. 	!reference temperature, C
+mode=0			!velocity calculation mode; 0-iterative calculation, 1-power-law formula Cw and eta calculated in the program, 2-power law with Cw and eta predefined by user
+modecaco3=0		!1 - calcite degradation dependent on calcite saturation is included, 0 - not included.
+mode_eps=0 		!epsilon calcilation mode; default - epsilon = const; mode=1, mode=2 - variable epsilon (see more in Readme file)
+mode_init=0		!1 - use analytical solution as initial profile (only for 1 component model nf=1)
+datamode=0		!0-boundary conditions are defined by total POM concentration; 1-total POM flux; 2-separate component concentrations; 3-separate component fluxes 
+pM=0.40, 0.25, 0.35	! component mass fractions
+time1=0.		!(days) parameter defining epsilon time dependence if mode_eps=1 or mode_eps=2 
+time2=3650.		!(days) parameter defining epsilon time dependence if mode_eps=1
+delta_t1=5.		!(days) parameter defining epsilon time dependence if mode_eps=2 
+delta_t2=10.		!(days) parameter defining epsilon time dependence if mode_eps=2 
+Time_end=315360000.	!simulation time (s)
+dtime=400		!Eulerian time step (s) (Lagrangian timestep is calculated in program)
+dtsave=864000		!output time interval (s)
+Z_measur=94.		!Depth of euphotic layer obtained from Sp measurements data (depth, m) 
+Sp_measur=5.59821E-06   !Sp measurments data to calculate M0 (Sp concentration, kg m^(−3) at Z_measur depth) (datamode=0)
+Fd_measur=0.		!Optionally, we can use total flux Fd measurements data to calculate M0. (datamode=1)
+flux=0., 0., 0.		!we can use separate component fluxes to calculate M0 and component mass fractions pM (datamode=3)
+conc=0., 0., 0. 	!we can use separate component concentrations to calculate M0 and component mass fractions pM (datamode=2)
+
+$end
