@@ -1,0 +1,12 @@
+$Inp1D
+nf=3		!number of components
+n_data1=97 	!number of experimental measurments (temperature)
+n_data2=97 	!number of experimental measurments (oxygen)
+n_data3=71  	!number of experimental measurments (CO3)
+filethetao="Atlantic Temperature.dat" !temperature profile
+fileo2="Atlantic Oxygen.dat" !oxygen profile
+fileco3satcalc="" !co3 saturation concentration
+fileco3="" 	!co3 concentration
+root="" 	!output directory
+
+$end
